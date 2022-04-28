@@ -1,59 +1,59 @@
 const cardArray = [
   {
     name: "cheeseburger",
-    img: "images/cheeseburger.png"
+    img: "src/images/cheeseburger.png"
   },
   {
     name: "fries",
-    img: "images/fries.png"
+    img: "src/images/fries.png"
   },
   {
     name: "hotdog",
-    img: "images/hotdog.png"
+    img: "src/images/hotdog.png"
   },
   {
     name: "ice-cream",
-    img: "images/ice-cream.png"
+    img: "src/images/ice-cream.png"
   },
   {
     name: "milkshake",
-    img: "images/milkshake.png"
+    img: "src/images/milkshake.png"
   },
   {
     name: "pizza",
-    img: "images/pizza.png"
+    img: "src/images/pizza.png"
   },
   {
     name: "cheeseburger",
-    img: "images/cheeseburger.png"
+    img: "src/images/cheeseburger.png"
   },
   {
     name: "fries",
-    img: "images/fries.png"
+    img: "src/images/fries.png"
   },
   {
     name: "hotdog",
-    img: "images/hotdog.png"
+    img: "src/images/hotdog.png"
   },
   {
-    name: "ice-cream",
-    img: "images/ice-cream.png"
+    name: "src/ice-cream",
+    img: "src/images/ice-cream.png"
   },
   {
     name: "milkshake",
-    img: "images/milkshake.png"
+    img: "src/images/milkshake.png"
   },
   {
     name: "pizza",
-    img: "images/pizza.png"
+    img: "src/images/pizza.png"
   }
 ];
 
 cardArray.sort(() => 0.5 - Math.random());
 
-console.log(cardArray);
-
 const gridDisplay = document.querySelector('#grid')
+const cardsChosen = []
+
 
 function createBoard () {
     for (let i = 0; i < cardArray.length; i++) {
@@ -70,5 +70,9 @@ createBoard()
 
 function flipCard() {
     let cardId = this.getAttribute('data-id')
+   
+    cardsChosen.push(cardArray[cardId].name)
     console.log('clicked', cardId)
+    console.log(cardsChosen)
+    this.setAttribute('src', cardArray[cardId].img)
 }
