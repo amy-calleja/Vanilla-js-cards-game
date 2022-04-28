@@ -2,3 +2,9 @@ body {
     font-family: sans-serif;
   }
   
+  #grid {
+      display: flex;
+      flex-wrap: wrap;
+      width: 400px;
+      height: 300px;
+  }
