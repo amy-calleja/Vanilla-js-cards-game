@@ -52,6 +52,7 @@ const cardArray = [
 cardArray.sort(() => 0.5 - Math.random());
 
 const gridDisplay = document.querySelector('#grid')
+const resultDisplay = document.querySelector('#result')
 let cardsChosen = []
 let cardsChosenIds = []
 const cardsWon = []
@@ -71,25 +72,40 @@ createBoard()
 
 function checkMatch() {
 const cards = document.querySelectorAll('#grid img')
-console.log(cards)
-    if (cardsChosen[0] == cardsChosen[1]) {
+const optionOneId = cardsChosenIds[0]
+const optionTwoId = cardsChosenIds[1]
+
+if (optionOneId == optionTwoId) {
+      cards[optionOneId].setAttribute('src', 'src/images/blank.png')
+      cards[optionTwoId].setAttribute('src', 'src/images/blank.png')
         alert('You found a match!')
-      cards[cardsChosenIds[0]].setAttribute('src', 'src/images/white.png')
-      cards[cardsChosenIds[1]].setAttribute('src', 'src/images/white.png')
-        
-      cards[cardsChosenIds[0]].removeEventListener('click', 'flipCard')
-        cards[cardsChosenIds[0]].removeEventListener('click', 'flipCard')
-   
+   }
+if (cardsChosen[0] == cardsChosen[1]) {
+      cards[optionOneId].setAttribute('src', 'src/images/white.png')
+      cards[optionTwoId].setAttribute('src', 'src/images/white.png')
+      cards[optionOneId].removeEventListener('click', flipCard)
+      cards[optionTwoId].removeEventListener('click', flipCard)
         cardsWon.push(cardsChosen)
+      } else {
+      cards[optionOneId].setAttribute('src', 'src/images/blank.png')
+      cards[optionTwoId].setAttribute('src', 'src/images/blank.png')
+        alert('Sorry try again!')
     }
 
+    resultDisplay.innerHTML = cardsWon.length
     cardsChosen = []
+    cardsChosenIds = []
+
+    if (cardsWon.length == cardArray.length/2) {
+      resultDisplay.innerHTML = 'Congratulations you Win!'
+    }
+
 }
 
 function flipCard() {
     let cardId = this.getAttribute('data-id')
    
-    cardsChosen.push(cardArray[cardId].name)
+  cardsChosen.push(cardArray[cardId].name)
   cardsChosenIds.push(cardId)
 
     this.setAttribute('src', cardArray[cardId].img)
