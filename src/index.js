@@ -36,7 +36,7 @@ const cardArray = [
     img: "src/images/hotdog.png"
   },
   {
-    name: "src/ice-cream",
+    name: "ice-cream",
     img: "src/images/ice-cream.png"
   },
   {
@@ -64,23 +64,22 @@ function createBoard () {
        card.setAttribute('data-id', i)
        card.addEventListener('click', flipCard)
     gridDisplay.appendChild(card)
-
     }                               
 }
 
 createBoard()
 
 function checkMatch() {
-const cards = document.querySelectorAll('#grid img')
+const cards = document.querySelectorAll('img')
 const optionOneId = cardsChosenIds[0]
 const optionTwoId = cardsChosenIds[1]
 
 if (optionOneId == optionTwoId) {
       cards[optionOneId].setAttribute('src', 'src/images/blank.png')
       cards[optionTwoId].setAttribute('src', 'src/images/blank.png')
-        alert('You found a match!')
    }
 if (cardsChosen[0] == cardsChosen[1]) {
+      alert('You found a match!')
       cards[optionOneId].setAttribute('src', 'src/images/white.png')
       cards[optionTwoId].setAttribute('src', 'src/images/white.png')
       cards[optionOneId].removeEventListener('click', flipCard)
@@ -97,7 +96,7 @@ if (cardsChosen[0] == cardsChosen[1]) {
     cardsChosenIds = []
 
     if (cardsWon.length == cardArray.length/2) {
-      resultDisplay.innerHTML = 'Congratulations you Win!'
+      resultDisplay.innerHTML = "Congratulations you Win!"
     }
 
 }
